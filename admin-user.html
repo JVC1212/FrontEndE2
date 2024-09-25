@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Crear Producto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e5e5e5;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .admin-panel {
+            background-color: #f0f0f0;
+            width: 700px;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .form-container h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100px;
+            margin: 0 auto;
+        }
+
+        button:hover {
+            background-color: #357ABD;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background-color: #357ABD;
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="admin-panel">
+        <!-- Botón de cerrar -->
+        <button class="close-btn">Cerrar</button>
+
+        <div class="form-container">
+            <h3>Crear Producto - Servicio</h3>
+            <form>
+                <input type="text" placeholder="Nombre">
+                <input type="text" placeholder="Imagen Url">
+                <input type="text" placeholder="Categoría">
+                <input type="text" placeholder="Precio">
+                <input type="text" placeholder="Contacto">
+                <button type="submit">Crear</button>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>
