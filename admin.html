@@ -4,163 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .admin-panel {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 600px;
-        }
-
-        .tabs {
-            display: flex;
-            background-color: #333;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .tablink {
-            flex: 1;
-            text-align: center;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: bold;
-            background-color: #333;
-            color: white;
-            border: none;
-            transition: background-color 0.3s;
-        }
-
-        .tablink:hover, .tablink.active {
-            background-color: #555;
-        }
-
-        .tabcontent {
-            display: none;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-            background-color: #fafafa;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        input[type="text"], input[type="password"] {
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            padding: 10px;
-            margin-top: 20px;
-            background-color: #428bca;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #2f73ae;
-        }
-
-        button.close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: #428bca;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button.close-btn:hover {
-            background-color: #0b2e4d;
-        }
-
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <section class="admin-panel">
-        <button class="close-btn" onclick="closePanel()">Cerrar</button>
+<body id="admin">
+    <header>
+        <nav>
+            <div class="user-info"></div>
+            <button class="logout-button">Cerrar Sesión</button>
+        </nav>
+    </header>
+    <main class="section admin-panel">
+        <h1>Panel de Administración</h1>
+
         <div class="tabs">
-            <button class="tablink" onclick="openTab(event, 'Usuarios')">Usuarios</button>
-            <button class="tablink" onclick="openTab(event, 'Categorias')">Categorías</button>
+            <button class="tab-button active" data-tab="usuarios">Usuarios</button>
+            <button class="tab-button" data-tab="categorias">Categorías</button>
         </div>
 
-        <div id="Usuarios" class="tabcontent">
-            <h3>Crear Usuario</h3>
-            <form>
-                <label for="name">Nombre</label>
-                <input type="text" id="name" name="name">
-                <label for="user">Usuario</label>
-                <input type="text" id="user" name="user">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password">
-                <label for="type">Tipo</label>
-                <input type="text" id="type" name="type">
-                <button type="submit">Crear</button>
+        <!-- Botón para gestionar productos/servicios -->
+        <div class="manage-products">
+            <button class="btn btn-primary" onclick="window.location.href='list.html'">Gestionar Productos/Servicios</button>
+        </div>
+
+        <!-- Contenido de usuarios -->
+        <div id="usuarios" class="tab-content active">
+            <h2>Crear Usuario</h2>
+            <form id="create-user-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="usuario">Usuario</label>
+                    <input type="text" id="usuario" name="usuario" required>
+                </div>
+                <div class="form-group">
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" id="contrasena" name="contrasena" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipo">Tipo</label>
+                    <select id="tipo" name="tipo" required>
+                        <option value="Administrador">Administrador</option>
+                        <option value="Publicador">Publicador</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-button">Crear Usuario</button>
             </form>
         </div>
 
-        <div id="Categorias" class="tabcontent">
-            <h3>Crear Categoría</h3>
-            <form>
-                <label for="category-name">Nombre</label>
-                <input type="text" id="category-name" name="category-name">
-                <label for="category-type">Tipo</label>
-                <input type="text" id="category-type" name="
-                category-type"> <button type="submit">Crear</button> </form> </div> </section>
+        <!-- Contenido de categorías -->
+        <div id="categorias" class="tab-content">
+            <h2>Crear Categoría</h2>
+            <form id="create-category-form">
+                <div class="form-group">
+                    <label for="nombre-categoria">Nombre</label>
+                    <input type="text" id="nombre-categoria" name="nombre-categoria" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipo-categoria">Tipo</label>
+                    <select id="tipo-categoria" name="tipo-categoria" required>
+                        <option value="Producto">Producto</option>
+                        <option value="Servicio">Servicio</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-button">Crear Categoría</button>
+            </form>
+            
+            
+        </div>
+    </main>
 
-                <script>
-                    function openTab(event, tabName) {
-                        // Ocultar tabs 
-                        var tabcontent = document.getElementsByClassName("tabcontent");
-                        for (var i = 0; i < tabcontent.length; i++) {
-                            tabcontent[i].style.display = "none";
-                        }
-                
-                        // remover active de elementos con clase tablink
-                        var tablinks = document.getElementsByClassName("tablink");
-                        for (var i = 0; i < tablinks.length; i++) {
-                            tablinks[i].className = tablinks[i].className.replace(" active", "");
-                        }
-                
-                        // Mostrar la tab activa
-                        document.getElementById(tabName).style.display = "block";
-                        event.currentTarget.className += " active";
-                    }
-                
-
-                    function closePanel() {
-                        window.location.href = '/'; // Redirigir a inicio
-                    }
-                
-                    // Inicializar tab
-                    document.addEventListener("DOMContentLoaded", function() {
-                        document.querySelector('.tablink').click();
-                    });
-                </script>
-
-</body> </html>
+    <script src="script.js"></script>
+</body>
+</html>
